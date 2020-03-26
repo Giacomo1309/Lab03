@@ -7,6 +7,8 @@ import java.util.*;
 public class Dictionary {
 	private Set<RichWord> dizionario= new HashSet<RichWord>();
 	private List<RichWord> daCercare;
+	private List<RichWord> errate;
+	private List<String> errate2;
 
 	public Dictionary(Set<RichWord> dizionario) {
 	
@@ -60,7 +62,11 @@ public class Dictionary {
 			//throw new InvalidParameterException("Devi inserire un vocabolario tra italiano e inglese");
 	//	}
 	}
-
+	/** 
+	 * controlla e definisce il boolean in base a se le parole sono scritte giuste
+	 * @param inputTextList
+	 * @return
+	 */
 	public List<RichWord> spellCheckText(List<String> inputTextList) {
 		daCercare = new LinkedList<RichWord>();
 		//Potrei farlo in un altro medoto a parte cosi che rimanga per qualsiasi controllo ma non mi va
@@ -81,7 +87,28 @@ public class Dictionary {
 		
 		return daCercare;
 	}
-	@Override
+/** 
+ * ritorna una lista di parole scritte in maniera errata	
+ * @param daCercare
+ * @return
+ */
+public List<RichWord> paroleErrate(List<RichWord> daCercare){
+		errate = new LinkedList<RichWord>();
+		for(RichWord w : daCercare) {
+			if(w.isCorretto()==false) {
+			errate.add(w);
+			}
+		}
+		return errate;
+	}
+	public List<String> paroleErrate2(List<RichWord> daCercare){
+		errate2 = new LinkedList<String>();
+		for(RichWord w : daCercare) {
+			errate2.add(w.getParola());
+			
+		}
+		return errate2;
+	}
 	public String toString() {
 		return "Dictionary [Dizionario=" + dizionario + "]";
 	}
