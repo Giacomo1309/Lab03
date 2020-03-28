@@ -22,7 +22,7 @@ public class EntryPoint extends Application {
     	controller = loader.getController();
     	controller.setModel(dictionary);
     	
-        stage.setTitle("JavaFX and Maven");
+        stage.setTitle("Titolo che cambia");
         stage.setScene(scene);
         stage.show();
     }
